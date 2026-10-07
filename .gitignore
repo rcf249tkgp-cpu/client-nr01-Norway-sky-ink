@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+# original client photos – only redacted masters go in the repo
+originals/
