@@ -1,0 +1,13 @@
+{
+  // Sky Ink Tattoo – static site served as Cloudflare Workers static assets.
+  // `npx wrangler deploy` uploads the prebuilt ./dist folder; no build step needed.
+  // After editing the site, run `npm run build` and commit dist/ again.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sky-ink-tattoo",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

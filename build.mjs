@@ -57,6 +57,32 @@ for (const [file, html] of pages) {
   await writeFile(out, html.replaceAll('__V__', version));
 }
 
+// 404 page (served by Cloudflare Workers assets via not_found_handling: "404-page")
+await writeFile(
+  join(dist, '404.html'),
+  `<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siden finnes ikke | Sky Ink Tattoo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css?v=${version}">
+</head>
+<body class="page-legal">
+<main class="legal" id="main">
+  <div class="container legal__inner">
+    <h1 class="legal__title">Siden finnes ikke</h1>
+    <p>Lenken kan være feil, eller siden er flyttet. <span lang="en">This page doesn’t exist.</span></p>
+    <p style="margin-top:2rem"><a class="btn btn--gold" href="/">Til forsiden</a> <a class="btn btn--ghost" href="/en/" lang="en">English</a></p>
+  </div>
+</main>
+</body>
+</html>
+`,
+);
+
 const urls = [
   ['/', '/en/', '1.0'],
   ['/personvern/', '/en/privacy/', '0.3'],

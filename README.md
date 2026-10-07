@@ -13,8 +13,16 @@ npm run build     # → dist/
 npm run preview   # http://localhost:4173
 ```
 
-Deploy by uploading `dist/` to any static host (Cloudflare Pages, Netlify, Vercel, one.com …).
-Build command: `npm run build`, output directory: `dist`.
+### Deploy (Cloudflare Workers)
+
+`dist/` is committed, and `wrangler.jsonc` serves it as Workers static assets, so no build step runs on deploy:
+
+```bash
+npx wrangler deploy
+```
+
+In Cloudflare Workers Builds, leave the build command empty and use `npx wrangler deploy` as the deploy command.
+**After changing anything, run `npm run build` and commit `dist/` too.** Otherwise the live site won't change.
 
 ## Where to change things
 
